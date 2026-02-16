@@ -30,6 +30,7 @@ class AgentOrderExpanderPreSavePlugin extends AbstractPlugin implements OrderExp
             return $salesOrderEntityTransfer;
         }
 
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (method_exists($salesOrderEntityTransfer, 'setAgentEmail')) {
             $salesOrderEntityTransfer->setAgentEmail($quoteTransfer->getAgentEmail());
         }
