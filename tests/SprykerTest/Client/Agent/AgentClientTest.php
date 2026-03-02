@@ -50,9 +50,6 @@ class AgentClientTest extends Unit
         $this->assertSame($expectedResult, $modifiedSecuredPattern);
     }
 
-    /**
-     * @return array
-     */
     public function applyAgentAccessOnSecuredPatternDataProvider(): array
     {
         return [

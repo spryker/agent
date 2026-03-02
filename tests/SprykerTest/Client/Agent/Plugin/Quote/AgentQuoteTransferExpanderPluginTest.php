@@ -38,9 +38,6 @@ class AgentQuoteTransferExpanderPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteDoesNotAddAgentWhenFeatureIsDisabled(): void
     {
         // Arrange
@@ -53,9 +50,6 @@ class AgentQuoteTransferExpanderPluginTest extends Unit
         $this->assertNull($expandedQuoteTransfer->getAgentEmail());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteDoesNotAddAgentWhenFeatureIsEnabledButAgentIsNotLoggedIn(): void
     {
         // Arrange
@@ -68,9 +62,6 @@ class AgentQuoteTransferExpanderPluginTest extends Unit
         $this->assertNull($expandedQuoteTransfer->getAgentEmail());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteAddsAgentEmailWhenFeatureIsEnabledAndAgentIsLoggedIn(): void
     {
         // Arrange
@@ -83,12 +74,6 @@ class AgentQuoteTransferExpanderPluginTest extends Unit
         $this->assertSame(static::AGENT_USERNAME, $expandedQuoteTransfer->getAgentEmail());
     }
 
-    /**
-     * @param bool $isSalesOrderAgentEnabled
-     * @param bool $isAgentLoggedIn
-     *
-     * @return \Spryker\Client\Agent\Plugin\Quote\AgentQuoteTransferExpanderPlugin
-     */
     protected function createPluginWithMockedDependencies(bool $isSalesOrderAgentEnabled, bool $isAgentLoggedIn): AgentQuoteTransferExpanderPlugin
     {
         // Mock config

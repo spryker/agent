@@ -28,9 +28,6 @@ class FinishImpersonationSessionTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testFinishImpersonationSessionSupportsImpersonationSessionFinisherPluginStack(): void
     {
         // Arrange
@@ -45,9 +42,6 @@ class FinishImpersonationSessionTest extends Unit
             ->finishImpersonationSession();
     }
 
-    /**
-     * @return void
-     */
     public function testFinishImpersonationEnsureCustomerLogoutIsExecuted(): void
     {
         // Arrange

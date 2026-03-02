@@ -19,11 +19,6 @@ class AgentHelper extends Module
     use LocatorHelperTrait;
     use DataCleanupHelperTrait;
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function haveRegisteredAgent(array $seedData = []): UserTransfer
     {
         $userTransfer = $this->createAgent($seedData);
@@ -37,22 +32,12 @@ class AgentHelper extends Module
         return $userTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer|null $userTransfer
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function registerAgent(?UserTransfer $userTransfer = null): UserTransfer
     {
         return $this->getUserFacade()
             ->createUser($userTransfer ?? $this->createAgent());
     }
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function createAgent(array $seedData = []): UserTransfer
     {
         $userTransfer = (new UserBuilder($seedData))->build();
@@ -61,9 +46,6 @@ class AgentHelper extends Module
         return $userTransfer;
     }
 
-    /**
-     * @return \Spryker\Zed\User\Business\UserFacadeInterface
-     */
     protected function getUserFacade(): UserFacadeInterface
     {
         return $this->getLocatorHelper()->getLocator()->user()->facade();

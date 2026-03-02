@@ -28,9 +28,6 @@ class AgentClientTester extends Actor
 {
     use _generated\AgentClientTesterActions;
 
-    /**
-     * @return \Spryker\Client\Agent\AgentClientInterface
-     */
     public function getClient(): AgentClientInterface
     {
         return $this->getLocator()->agent()->client();

@@ -54,11 +54,6 @@ class AgentToSessionClientBridge implements AgentToSessionClientInterface
         $this->sessionClient->set($name, $value);
     }
 
-    /**
-     * @param int|null $lifetime
-     *
-     * @return void
-     */
     public function invalidate(?int $lifetime = null): void
     {
         $this->sessionClient->invalidate($lifetime);

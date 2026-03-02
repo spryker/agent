@@ -46,9 +46,6 @@ class AgentFacadeTest extends Unit
      */
     protected $customerTransfers;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -56,9 +53,6 @@ class AgentFacadeTest extends Unit
         $this->customerTransfers = $this->tester->createCustomers();
     }
 
-    /**
-     * @return void
-     */
     public function testGetExitingAgentByUsername(): void
     {
         // Arrange
@@ -73,9 +67,6 @@ class AgentFacadeTest extends Unit
         $this->assertTrue($agentFromAgentFacade->getIsAgentFound());
     }
 
-    /**
-     * @return void
-     */
     public function testGetNonExitingAgentByUsername(): void
     {
         // Act
@@ -88,9 +79,6 @@ class AgentFacadeTest extends Unit
         $this->assertFalse($agentFromAgentFacade->getIsAgentFound());
     }
 
-    /**
-     * @return void
-     */
     public function testFindCustomersByQuery(): void
     {
         // Arrange
@@ -107,9 +95,6 @@ class AgentFacadeTest extends Unit
         $this->assertGreaterThan(0, $customerAutocompleteResponseTransfer->getCustomers()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testFindNonExitingCustomersByQuery(): void
     {
         // Arrange
@@ -124,9 +109,6 @@ class AgentFacadeTest extends Unit
         $this->assertCount(0, $customerAutocompleteResponseTransfer->getCustomers());
     }
 
-    /**
-     * @return void
-     */
     public function testFindCustomersByQueryUsesDefaultLimitWhenNoLimitProvided(): void
     {
         // Arrange
@@ -176,9 +158,6 @@ class AgentFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return array
-     */
     public function findCustomersByQueryWithOffsetAndLimitRetrivesCustomersDataProvider(): array
     {
         return [

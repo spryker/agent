@@ -37,9 +37,6 @@ class AgentOrderExpanderPreSavePluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandDoesNotAddAgentWhenFeatureIsDisabled(): void
     {
         // Arrange
@@ -52,9 +49,6 @@ class AgentOrderExpanderPreSavePluginTest extends Unit
         $this->assertNull($salesOrderEntityTransfer->getAgentEmail());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandDoesNotAddAgentWhenFeatureIsEnabledButAgentEmailNotInQuote(): void
     {
         // Arrange
@@ -67,9 +61,6 @@ class AgentOrderExpanderPreSavePluginTest extends Unit
         $this->assertNull($salesOrderEntityTransfer->getAgentEmail());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandAddsAgentEmailWhenFeatureIsEnabledAndAgentEmailExistsInQuote(): void
     {
         // Arrange
@@ -83,11 +74,6 @@ class AgentOrderExpanderPreSavePluginTest extends Unit
         $this->assertSame(static::AGENT_EMAIL, $salesOrderEntityTransfer->getAgentEmail());
     }
 
-    /**
-     * @param bool $isSalesOrderAgentEnabled
-     *
-     * @return \Spryker\Zed\Agent\Communication\Plugin\Sales\AgentOrderExpanderPreSavePlugin
-     */
     protected function createPluginWithMockedConfig(bool $isSalesOrderAgentEnabled): AgentOrderExpanderPreSavePlugin
     {
         $configMock = $this->createMock(AgentConfig::class);
