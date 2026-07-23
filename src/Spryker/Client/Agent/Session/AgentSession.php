@@ -38,7 +38,11 @@ class AgentSession implements AgentSessionInterface
 
     public function setAgent(UserTransfer $userTransfer): void
     {
-        $this->getSessionClient()->set(static::SESSION_KEY, $userTransfer);
+        $userData = $userTransfer->modifiedToArray();
+        unset($userData[UserTransfer::PASSWORD]);
+        $userForSession = (new UserTransfer())->fromArray($userData, true);
+
+        $this->getSessionClient()->set(static::SESSION_KEY, $userForSession);
     }
 
     public function invalidateAgent(): void
