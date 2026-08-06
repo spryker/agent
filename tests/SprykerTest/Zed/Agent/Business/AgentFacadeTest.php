@@ -41,18 +41,6 @@ class AgentFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @var array<\Generated\Shared\Transfer\CustomerTransfer>
-     */
-    protected $customerTransfers;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->customerTransfers = $this->tester->createCustomers();
-    }
-
     public function testGetExitingAgentByUsername(): void
     {
         // Arrange
@@ -138,6 +126,9 @@ class AgentFacadeTest extends Unit
         CustomerQueryTransfer $customerQueryTransfer,
         int $expectedOffset
     ): void {
+        // Arrange
+        $customerTransfers = $this->tester->createCustomers();
+
         // Act
         $customerAutocompleteResponseTransfer = $this->tester->getFacade()
             ->findCustomersByQuery($customerQueryTransfer);
@@ -149,7 +140,7 @@ class AgentFacadeTest extends Unit
             'Returned customers count should be equal to limit.',
         );
         foreach ($customerAutocompleteResponseTransfer->getCustomers() as $index => $actualCustomerTransfer) {
-            $expectedCustomerTransfer = $this->customerTransfers[$expectedOffset + $index];
+            $expectedCustomerTransfer = $customerTransfers[$expectedOffset + $index];
             $this->assertSame(
                 $expectedCustomerTransfer->getCustomerReference(),
                 $actualCustomerTransfer->getCustomerReference(),
