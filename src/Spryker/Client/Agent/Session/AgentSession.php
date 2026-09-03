@@ -13,14 +13,9 @@ use Spryker\Client\Agent\Dependency\Client\AgentToSessionClientInterface;
 class AgentSession implements AgentSessionInterface
 {
     /**
-     * @var int
-     */
-    protected const DEFAULT_INVALIDATE_TIME = 1;
-
-    /**
      * @var string
      */
-    protected const SESSION_KEY = 'agent-session';
+    protected const string SESSION_KEY = 'agent-session';
 
     public function __construct(protected AgentToSessionClientInterface $sessionClient)
     {
@@ -47,7 +42,7 @@ class AgentSession implements AgentSessionInterface
 
     public function invalidateAgent(): void
     {
-        $this->getSessionClient()->invalidate(static::DEFAULT_INVALIDATE_TIME);
+        $this->getSessionClient()->remove(static::SESSION_KEY);
     }
 
     protected function getSessionClient(): AgentToSessionClientInterface

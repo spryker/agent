@@ -32,5 +32,12 @@ interface AgentToSessionClientInterface
      */
     public function set($name, $value);
 
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function remove(string $name);
+
     public function invalidate(?int $lifetime = null): void;
 }

@@ -54,6 +54,16 @@ class AgentToSessionClientBridge implements AgentToSessionClientInterface
         $this->sessionClient->set($name, $value);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function remove(string $name)
+    {
+        return $this->sessionClient->remove($name);
+    }
+
     public function invalidate(?int $lifetime = null): void
     {
         $this->sessionClient->invalidate($lifetime);

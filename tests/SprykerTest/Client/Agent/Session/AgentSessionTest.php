@@ -50,4 +50,19 @@ class AgentSessionTest extends Unit
         // The original transfer stays untouched for the caller.
         $this->assertSame(static::PASSWORD_HASH, $userTransfer->getPassword());
     }
+
+    public function testInvalidateAgentRemovesOnlyTheAgentSessionKey(): void
+    {
+        // Arrange
+        $sessionClientMock = $this->createMock(AgentToSessionClientInterface::class);
+        $sessionClientMock->expects($this->once())
+            ->method('remove')
+            ->with('agent-session');
+        $sessionClientMock->expects($this->never())
+            ->method('invalidate');
+        $agentSession = new AgentSession($sessionClientMock);
+
+        // Act
+        $agentSession->invalidateAgent();
+    }
 }
