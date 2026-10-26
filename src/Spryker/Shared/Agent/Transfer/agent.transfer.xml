@@ -4,6 +4,7 @@
     <transfer name="User">
         <property name="isAgent" type="bool"/>
         <property name="username" type="string"/>
+        <property name="password" type="string"/>
     </transfer>
 
     <transfer name="CustomerAutocompleteResponse">
