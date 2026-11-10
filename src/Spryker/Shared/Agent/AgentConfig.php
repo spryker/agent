@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\Agent;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class AgentConfig extends AbstractBundleConfig
+class AgentConfig extends AbstractSharedConfig
 {
     /**
      * Specification:
